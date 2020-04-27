@@ -16,6 +16,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public float jumpForce = 700f;
     Camera cam;
     bool day = true;
+ 
 
     public GameObject[] dayassets;
     public GameObject[] nightassets;
@@ -39,16 +40,16 @@ public class PlayerControllerScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (day)
+            if (!day)
             {
                 Toggle();
-                day = false;
+                day = true;
             }
 
-            else if (!day)
+            else if (day)
             {
                 ToggleBack();
-                day = true;
+                day = false;
             }
         }
     }
