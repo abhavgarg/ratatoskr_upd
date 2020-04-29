@@ -43,6 +43,8 @@ public class MenuController : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene("mainScene");
+        ResumeGame();
+        ScoreScript.scoreVal = 0;
     }
 
     public void ReturntoMain()
