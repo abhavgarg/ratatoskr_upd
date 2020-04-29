@@ -32,9 +32,9 @@ public class CameraControllerScript : MonoBehaviour {
 
  
 
-		if(Input.GetKey(KeyCode.Escape))
+		/*if(Input.GetKey(KeyCode.Escape))
 		{
 			Application.Quit();
-		}
+		}*/
 	}
 }

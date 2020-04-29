@@ -38,7 +38,7 @@ public class GameOverControllerScript : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("mainScene");
                 ScoreScript.scoreVal = 0;
             }
         }

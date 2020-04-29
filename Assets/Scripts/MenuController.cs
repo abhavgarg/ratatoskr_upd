@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public string startScreen;
+    //public string startScreen;
     public GameObject pauseMenu;
     public bool isPaused;
 
@@ -42,13 +42,13 @@ public class MenuController : MonoBehaviour
 
     public void RestartLevel()
     {
-
+        SceneManager.LoadScene("mainScene");
     }
 
     public void ReturntoMain()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(startScreen);
+        SceneManager.LoadScene("startScreen");
     }
 
 }
