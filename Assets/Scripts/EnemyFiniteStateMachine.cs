@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFiniteStateMachine : MonoBehaviour {
 
-	public float patrolSpeed = 1f;
+	public float patrolSpeed = 0f;
 	public float maxSpeed = 8f;
 	public float triggerRange = 7.5f;
 	bool facingRight = true;

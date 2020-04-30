@@ -11,7 +11,7 @@ public class PlayerControllerScript : MonoBehaviour {
 
     bool grounded = false;
     public GameObject groundCheck;
-    float groundRadius = 0.2f;
+    float groundRadius = 0.75f;
     public LayerMask whatIsGround;
     public float jumpForce = 700f;
     Camera cam;
@@ -20,6 +20,8 @@ public class PlayerControllerScript : MonoBehaviour {
 
     public GameObject[] dayassets;
     public GameObject[] nightassets;
+    public GameObject[] dayback;
+    public GameObject[] nightback;
 
 
     // Use this for initialization
@@ -27,6 +29,9 @@ public class PlayerControllerScript : MonoBehaviour {
         anim = GetComponent<Animator>();
         dayassets = GameObject.FindGameObjectsWithTag("day_obj");
         nightassets = GameObject.FindGameObjectsWithTag("night_obj");
+        dayback = GameObject.FindGameObjectsWithTag("day_bgd");
+        nightback = GameObject.FindGameObjectsWithTag("night_bgd");
+        Toggle();
     }
 	
 	// Update is called once per frame - Good for input/game mechanic updating
@@ -38,7 +43,8 @@ public class PlayerControllerScript : MonoBehaviour {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (!day)
             {
@@ -136,25 +142,80 @@ public class PlayerControllerScript : MonoBehaviour {
     {
         foreach (GameObject aa in dayassets)
         {
-            aa.SetActive(true);
+           // aa.SetActive(true);
+            if (aa.GetComponent<EdgeCollider2D>())
+            {
+                aa.GetComponent<EdgeCollider2D>().enabled = true;
+            }
+            if (aa.GetComponent<SpriteRenderer>())
+            {
+                aa.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1.0f);
+            }
+            
         }
 
 
         foreach (GameObject bb in nightassets)
         {
+            //bb.SetActive(false);
+            if (bb.GetComponent<EdgeCollider2D>())
+            {
+                bb.GetComponent<EdgeCollider2D>().enabled = false;
+                
+            }
+            if (bb.GetComponent<SpriteRenderer>())
+            {
+                bb.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
+            }
+
+        }
+
+        foreach (GameObject aa in dayback)
+        {
+             aa.SetActive(true);
+        }
+
+
+        foreach (GameObject bb in nightback)
+        {
             bb.SetActive(false);
         }
-        
+
     }
     private void ToggleBack()
     {
         foreach (GameObject aa in dayassets)
         {
+            //aa.SetActive(false);
+
+            if (aa.GetComponent<EdgeCollider2D>())
+            {
+                aa.GetComponent<EdgeCollider2D>().enabled = false;
+            }
+            if (aa.GetComponent<SpriteRenderer>())
+            {
+                aa.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
+            }
+        }
+
+        foreach (GameObject bb in nightassets)
+        {
+            //bb.SetActive(true);
+            if (bb.GetComponent<EdgeCollider2D>())
+            {
+                bb.GetComponent<EdgeCollider2D>().enabled = true;
+            }
+            if (bb.GetComponent<SpriteRenderer>())
+            {
+                bb.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1.0f);
+            }
+        }
+        foreach (GameObject aa in dayback)
+        {
             aa.SetActive(false);
         }
 
-
-        foreach (GameObject bb in nightassets)
+        foreach (GameObject bb in nightback)
         {
             bb.SetActive(true);
         }

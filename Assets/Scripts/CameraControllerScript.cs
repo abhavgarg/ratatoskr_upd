@@ -12,12 +12,17 @@ public class CameraControllerScript : MonoBehaviour {
     {
         Vector3 newCameraPosition = player.transform.position;
 
-        if(newCameraPosition.y < -0.6f)
+        if(newCameraPosition.y < -1.69f)
         {
-            newCameraPosition.y = -0.6f;
+            newCameraPosition.y = -1.69f;
         }
 
-        if(newCameraPosition.x <= furthestXPos) //camera movements not restricted
+        if (newCameraPosition.y > 5.0f)
+        {
+            newCameraPosition.y = 5.0f;
+        }
+
+        if (newCameraPosition.x <= furthestXPos) //camera movements not restricted
         {
             newCameraPosition.x = furthestXPos;
         }
