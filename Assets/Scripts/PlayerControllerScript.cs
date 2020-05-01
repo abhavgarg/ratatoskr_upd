@@ -22,6 +22,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public GameObject[] nightassets;
     public GameObject[] dayback;
     public GameObject[] nightback;
+    RaycastHit hit;
 
 
     // Use this for initialization
@@ -32,6 +33,7 @@ public class PlayerControllerScript : MonoBehaviour {
         dayback = GameObject.FindGameObjectsWithTag("day_bgd");
         nightback = GameObject.FindGameObjectsWithTag("night_bgd");
         Toggle();
+        
     }
 	
 	// Update is called once per frame - Good for input/game mechanic updating
@@ -102,7 +104,12 @@ public class PlayerControllerScript : MonoBehaviour {
             anim.SetFloat("speed", Mathf.Abs(rigidBodyComp.velocity.x / maxSpeed));
         }
 
-        if(rigidBodyComp.position.y <= -5.5f)
+        if (Physics.SphereCast(rigidBodyComp.transform.position, 0.5f, -(transform.up), out hit, 0.2f, whatIsGround))
+        {
+            rigidBodyComp.transform.rotation = Quaternion.LookRotation(Vector3.Cross(transform.right, hit.normal));
+        }
+
+        if (rigidBodyComp.position.y <= -5.5f)
         {
             PlayerEndGame();
         }
@@ -142,32 +149,55 @@ public class PlayerControllerScript : MonoBehaviour {
     {
         foreach (GameObject aa in dayassets)
         {
-           // aa.SetActive(true);
-            if (aa.GetComponent<EdgeCollider2D>())
+            // aa.SetActive(true);
+
+            EdgeCollider2D[] myColliders = aa.GetComponents<EdgeCollider2D>();
+
+            foreach (EdgeCollider2D c in myColliders)
+            {
+                c.enabled = true;
+            }
+            /*if (aa.GetComponent<EdgeCollider2D>())
             {
                 aa.GetComponent<EdgeCollider2D>().enabled = true;
-            }
+            }*/
             if (aa.GetComponent<SpriteRenderer>())
             {
                 aa.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1.0f);
             }
-            
+
+            if (aa.GetComponent<PlatformEffector2D>())
+            {
+                aa.GetComponent<PlatformEffector2D>().enabled = true;
+            }
+
         }
 
 
         foreach (GameObject bb in nightassets)
         {
             //bb.SetActive(false);
-            if (bb.GetComponent<EdgeCollider2D>())
+
+            EdgeCollider2D[] myColliders = bb.GetComponents<EdgeCollider2D>();
+
+            foreach (EdgeCollider2D c in myColliders)
+            {
+                c.enabled = false;
+            }
+            /*if (bb.GetComponent<EdgeCollider2D>())
             {
                 bb.GetComponent<EdgeCollider2D>().enabled = false;
                 
-            }
+            }*/
             if (bb.GetComponent<SpriteRenderer>())
             {
                 bb.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
             }
 
+            if (bb.GetComponent<PlatformEffector2D>())
+            {
+                bb.GetComponent<PlatformEffector2D>().enabled = false;
+            }
         }
 
         foreach (GameObject aa in dayback)
@@ -188,26 +218,49 @@ public class PlayerControllerScript : MonoBehaviour {
         {
             //aa.SetActive(false);
 
-            if (aa.GetComponent<EdgeCollider2D>())
+            EdgeCollider2D[] myColliders = aa.GetComponents<EdgeCollider2D>();
+
+            foreach (EdgeCollider2D c in myColliders)
+            {
+                c.enabled = false;
+            }
+
+            /*if (aa.GetComponent<EdgeCollider2D>())
             {
                 aa.GetComponent<EdgeCollider2D>().enabled = false;
-            }
+            }*/
             if (aa.GetComponent<SpriteRenderer>())
             {
                 aa.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
+            }
+
+            if (aa.GetComponent<PlatformEffector2D>())
+            {
+                aa.GetComponent<PlatformEffector2D>().enabled = false;
             }
         }
 
         foreach (GameObject bb in nightassets)
         {
             //bb.SetActive(true);
-            if (bb.GetComponent<EdgeCollider2D>())
+
+            EdgeCollider2D[] myColliders = bb.GetComponents<EdgeCollider2D>();
+
+            foreach (EdgeCollider2D c in myColliders)
+            {
+                c.enabled = true;
+            }
+            /*if (bb.GetComponent<EdgeCollider2D>())
             {
                 bb.GetComponent<EdgeCollider2D>().enabled = true;
-            }
+            }*/
             if (bb.GetComponent<SpriteRenderer>())
             {
                 bb.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1.0f);
+            }
+            if (bb.GetComponent<PlatformEffector2D>())
+            {
+                bb.GetComponent<PlatformEffector2D>().enabled = true;
             }
         }
         foreach (GameObject aa in dayback)
