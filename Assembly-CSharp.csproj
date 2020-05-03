@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Audio.cs" />
     <Compile Include="Assets\Scripts\AutoDestroyParticleSystem.cs" />
     <Compile Include="Assets\Scripts\CameraControllerScript.cs" />
     <Compile Include="Assets\Scripts\EnemyFiniteStateMachine.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scripts\PickupControllerScript.cs" />
     <Compile Include="Assets\Scripts\PlayerControllerScript.cs" />
     <Compile Include="Assets\Scripts\ScoreScript.cs" />
+    <Compile Include="Assets\Scripts\VolControl.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

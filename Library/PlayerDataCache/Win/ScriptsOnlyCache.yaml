@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - PickupControllerScript
     - PlayerControllerScript
     - ScoreScript
+    - VolControl
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -26,8 +27,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -46,6 +49,57 @@ ScriptsOnlyBuild:
     - UnityEngine.Networking.NetworkIdentity
   sceneClasses:
     Assets/Scenes/Controls.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9710}
+    - Class: 114
+      Script: {instanceID: 9958}
+    - Class: 114
+      Script: {instanceID: 10456}
+    - Class: 114
+      Script: {instanceID: 10942}
+    - Class: 114
+      Script: {instanceID: 10962}
+    - Class: 114
+      Script: {instanceID: 11202}
+    - Class: 114
+      Script: {instanceID: 11438}
+    - Class: 114
+      Script: {instanceID: 11518}
+    - Class: 114
+      Script: {instanceID: 11862}
+    - Class: 114
+      Script: {instanceID: 11990}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Credits.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -135,6 +189,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11990}
     - Class: 114
       Script: {instanceID: 12026}
+    - Class: 114
+      Script: {instanceID: 262350}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -148,6 +204,12 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
     Assets/Scenes/mainScene.unity:
     - Class: 1
@@ -172,9 +234,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 68
       Script: {instanceID: 0}
+    - Class: 70
+      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -236,6 +304,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
+      Script: {instanceID: 0}
     - Class: 251
       Script: {instanceID: 0}
     Assets/Scenes/startScreen.unity:
@@ -262,6 +336,10 @@ ScriptsOnlyBuild:
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -307,6 +385,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11862}
     - Class: 114
       Script: {instanceID: 11990}
+    - Class: 114
+      Script: {instanceID: 238604}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -324,6 +404,12 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -640,7 +726,7 @@ ScriptsOnlyBuild:
     className: NetworkTransformVisualizer
   - hash:
       serializedVersion: 2
-      Hash: 5044eb4b0390cd64341ae8f0f69094ab
+      Hash: 120f59e14256a029b4d95a44c193207a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerControllerScript
@@ -1124,10 +1210,17 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: e09cfabdb09d0fd41cc4de3528629a5f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VolControl
   platform: 5
   scenePathNames:
   - Assets/Scenes/startScreen.unity
   - Assets/Scenes/Options.unity
   - Assets/Scenes/Controls.unity
+  - Assets/Scenes/Credits.unity
   - Assets/Scenes/mainScene.unity
   playerPath: C:/Users/abhav/Desktop/ratatoskr-master/des105_platformer.exe

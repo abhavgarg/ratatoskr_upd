@@ -23,6 +23,8 @@ public class PlayerControllerScript : MonoBehaviour {
     public GameObject[] dayback;
     public GameObject[] nightback;
     RaycastHit hit;
+    private UnityEngine.AudioSource[] source;
+    public GameObject aud;
 
 
     // Use this for initialization
@@ -33,21 +35,31 @@ public class PlayerControllerScript : MonoBehaviour {
         dayback = GameObject.FindGameObjectsWithTag("day_bgd");
         nightback = GameObject.FindGameObjectsWithTag("night_bgd");
         Toggle();
-        
+        aud = GameObject.FindGameObjectWithTag("Music");
+        source = GetComponents<UnityEngine.AudioSource>();
+        source[3].volume = 1f;
+        source[3].Play();
     }
 	
 	// Update is called once per frame - Good for input/game mechanic updating
 	void Update ()
     {
+        
         if(grounded && Input.GetKeyDown(KeyCode.Space) && movementAllowed)
         {
             anim.SetBool("ground", false);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+            source[0].volume = 0.1f;
+            source[0].Play();
         }
 
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+
+            source[1].volume = 0.5f;
+            source[1].Play();
+
             if (!day)
             {
                 Toggle();
@@ -60,6 +72,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 day = false;
             }
         }
+        //aud.GetComponent<Audio>().StopMusic();
     }
 
     // Called at set interval each time. Good for physics
@@ -113,6 +126,7 @@ public class PlayerControllerScript : MonoBehaviour {
         {
             PlayerEndGame();
         }
+        aud.GetComponent<UnityEngine.AudioSource>().Stop();
     }
 
     void Flip()
@@ -277,6 +291,9 @@ public class PlayerControllerScript : MonoBehaviour {
     private void PlayerEndGame()
     {
         movementAllowed = false;
+        source[2].volume = 0.6f;
+        source[2].Play();
+        source[3].Stop();
         GameObject gameOverView = GameObject.Find("GameOverView");
         gameOverView.GetComponent<GameOverControllerScript>().BeginEndGame();
     }

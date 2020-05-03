@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyFiniteStateMachine : MonoBehaviour {
 
 	public float patrolSpeed = 0f;
-	public float maxSpeed = 8f;
-	public float triggerRange = 7.5f;
+	public float maxSpeed = 6f;
+	public float triggerRange = 9.5f;
 	bool facingRight = true;
 	Animator anim;
 	bool movementAllowed = true;
@@ -73,16 +73,17 @@ public class EnemyFiniteStateMachine : MonoBehaviour {
 	private void BaseMovementAndAnimation()
 	{
 		Rigidbody2D rigidBodyComp = GetComponent<Rigidbody2D>();
-
+ 
 		grounded = Physics2D.OverlapCircle(groundCheck.transform.position, groundRadius, whatIsGround);
 		anim.SetBool("ground", grounded);
 
-		if((facingRight && (rigidBodyComp.velocity.x < 0f)) || (!facingRight && (rigidBodyComp.velocity.x > 0f)))
-		{
-			FlipTransform();
-		}
+        if ((facingRight && (this.transform.position.x > player.transform.position.x)) || (!facingRight && (this.transform.position.x < player.transform.position.x)))
+        {
+            
+            FlipTransform();
+        }
 
-		if(movementAllowed)
+        if (movementAllowed)
 		{
 			PerformMovement(aiState == State.Chase ? maxSpeed : patrolSpeed);
 		}
