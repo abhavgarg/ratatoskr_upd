@@ -185,6 +185,11 @@ public class PlayerControllerScript : MonoBehaviour {
                 aa.GetComponent<PlatformEffector2D>().enabled = true;
             }
 
+            if (aa.GetComponent<PolygonCollider2D>())
+            {
+                aa.GetComponent<PolygonCollider2D>().enabled = true;
+            }
+
         }
 
 
@@ -211,6 +216,11 @@ public class PlayerControllerScript : MonoBehaviour {
             if (bb.GetComponent<PlatformEffector2D>())
             {
                 bb.GetComponent<PlatformEffector2D>().enabled = false;
+            }
+
+            if (bb.GetComponent<PolygonCollider2D>())
+            {
+                bb.GetComponent<PolygonCollider2D>().enabled = false;
             }
         }
 
@@ -252,6 +262,11 @@ public class PlayerControllerScript : MonoBehaviour {
             {
                 aa.GetComponent<PlatformEffector2D>().enabled = false;
             }
+
+            if (aa.GetComponent<PolygonCollider2D>())
+            {
+                aa.GetComponent<PolygonCollider2D>().enabled = false;
+            }
         }
 
         foreach (GameObject bb in nightassets)
@@ -275,6 +290,11 @@ public class PlayerControllerScript : MonoBehaviour {
             if (bb.GetComponent<PlatformEffector2D>())
             {
                 bb.GetComponent<PlatformEffector2D>().enabled = true;
+            }
+
+            if (bb.GetComponent<PolygonCollider2D>())
+            {
+                bb.GetComponent<PolygonCollider2D>().enabled = true;
             }
         }
         foreach (GameObject aa in dayback)
